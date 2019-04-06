@@ -9,7 +9,7 @@ export class DataService {
 
 getBooks(word:string) {
 	
-return this.http.get(`http://cycbookshop.herokuapp.com/booksearch?q=${word}`)
+return this.http.get(`https://cycbookshop.herokuapp.com/booksearch?q=${word}`)
 }
 }
 
