@@ -18,7 +18,7 @@ books:Object;
 constructor(private data: DataService) { }
 
   ngOnInit() {
-	
+/*	
   this.data.getBooks(`${this.values}`).subscribe(data=>{
   
   this.books = data;			
@@ -30,6 +30,9 @@ addFav(i:number,book:Object)
 {
 this.clickMessage = `Need to login first!  book with title: ${book[i].title} is pressed!`;
 console.log("Need to login first")
+}
+*/
+
 }
 }
 

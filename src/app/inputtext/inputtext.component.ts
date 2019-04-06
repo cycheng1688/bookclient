@@ -24,13 +24,15 @@ books:Object;
   constructor(private data: DataService) { }
 
  addSearch(newSearch:string){
-	
+	if(newSearch!=''){
   this.data.getBooks(`${newSearch}`).subscribe(data=>{
   
   this.books = data;			
   console.log(this.books)
 })
 }
+ }
+ 
 addFav(i:number,book:Object)
 {
 this.clickMessage = `Need to login first!  book with title: ${book[i].title} is pressed!`;
