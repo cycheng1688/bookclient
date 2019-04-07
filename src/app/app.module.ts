@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { InputtextComponent } from './inputtext/inputtext.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
