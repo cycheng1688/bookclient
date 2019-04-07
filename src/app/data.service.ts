@@ -19,26 +19,29 @@ export class DataService {
   constructor(private http: HttpClient) { }
 
 getFav() {
-	
-	const urlFav = 'https://cycbookshop.herokuapp.com/favourites';
-/*	
-	const headersOpt = new  HttpHeaders()
-    .set('Accept','application/json') 
-	.set('Authorization',`${authorizationData}`)
-	
-	
-	*/
-let authorizationData = 'Basic '+  btoa('cycheng:123456');
+	let authorizationData = 'Basic '+  btoa('cycheng:123456');
 	console.log(authorizationData);
+	const urlFav = 'https://cycbookshop.herokuapp.com/favourites';
+
+	const httpOptions = new  HttpHeaders()
+    .set('Accept','application/json') 
+	.set('Content-type', 'text/plain')
+	//.set('Authorization',`${authorizationData}`)
+	
+	
+	
+/*
  const httpOptions = {
 	 headers:new HttpHeaders({
     'Content-Type':  'text/plain',
     'Authorization':authorizationData
   })
  };
+ 
+ */
 console.log(JSON.stringify(httpOptions))
 
-    return this.http.get(urlFav,httpOptions);
+    return this.http.get(urlFav,{headers:httpOptions,withCredentials: true});
 	
 	}
 
