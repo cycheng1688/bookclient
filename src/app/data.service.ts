@@ -11,28 +11,32 @@ export class DataService {
 
   constructor(private http: HttpClient) { }
 
+getFav() {
+	
+	let authorizationData =  btoa('cycheng:123456');
+	console.log(authorizationData);
+	const urlFav = 'https://cycbookshop.herokuapp.com/favourites';
+	//const headersOption:HttpHeaders = new HttpHeaders({'Accept': 'application/json',
+	//'Authorization':'Basic ' + `${authorizationData}`,'Access-Control-Allow-Origin': '*',
+	//'Access-Control-Allow-Credentials': true
+	//});
+	//headersOption.append('Accept': 'application/json');
+	//headersOption.append('Authorization':'Basic ' + `${authorizationData}`);
+	//headersOption.append('Access-Control-Allow-Origin': '*')
+    //headersOption.append('Access-Control-Allow-Credentials': true)
+    return this.http.get(urlFav,{headers:new HttpHeaders({
+	//'Accept': 'application/json',
+	'Authorization':'Basic ' + `${authorizationData}`,
+	//'Access-Control-Allow-Origin': '*',
+	//'Access-Control-Allow-Credentials': true
+	  })
+	})
+ }
+ 
 getBooks(word:string) {
 	
 return this.http.get(`https://cycbookshop.herokuapp.com/booksearch?q=${word}`)
  }
  
-getFav() {
-	//let authorizationData = 'Basic ' + btoa('cycheng:123456');
-	 //console.log(authorizationData);
-	/*const headerOptions = {
-    headers: new HttpHeaders({
-        'Content-Type':  "application/json",
-        'Authorization': "Basic Y3ljaGVuZzoxMjM0NTY="
-	})
-	}*/
-return this.http.get(`https://cycbookshop.herokuapp.com/favourites`,{ headers: new HttpHeaders({
-        'Content-Type':  "application/json",
-        'Authorization': "Basic Y3ljaGVuZzoxMjM0NTY=",
-	
-	})
-	})
- }
+
 }
-
-
-

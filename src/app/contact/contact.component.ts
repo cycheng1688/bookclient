@@ -23,7 +23,7 @@ books:Object;
   this.data.getFav().subscribe(data=>{
   this.books = data;			
   console.log(this.books)
-})
-  }
+  })
+ }
 
 }

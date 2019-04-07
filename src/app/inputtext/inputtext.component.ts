@@ -28,7 +28,7 @@ books:Object;
   this.data.getBooks(`${newSearch}`).subscribe(data=>{
   
   this.books = data;			
-  console.log(this.books)
+//  console.log(this.books)
 })
 }
  }
