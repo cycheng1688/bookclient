@@ -26,8 +26,8 @@ getFav() {
 	const httpOptions = new  HttpHeaders()
     .set('Accept','application/json') 
 	.set('Content-type', 'text/plain')
-	//.set('Authorization',`${authorizationData}`)
-	
+	.set('Authorization',authorizationData)
+	.set('Access-Control-Allow-Origin', '*')
 	
 	
 /*
@@ -41,7 +41,7 @@ getFav() {
  */
 console.log(JSON.stringify(httpOptions))
 
-    return this.http.get(urlFav,{headers:httpOptions,withCredentials: true});
+    return this.http.get(urlFav,{headers:httpOptions});
 	
 	}
 
