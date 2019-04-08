@@ -9,8 +9,6 @@ import { HttpHeaders } from '@angular/common/http';
 })
 
 
-
-
 export class DataService {
 
 
@@ -21,23 +19,27 @@ export class DataService {
 getFav() {
 	let authorizationData = 'Basic '+  btoa('cycheng:123456');
 	console.log(authorizationData);
-	const urlFav = 'https://cycbookshop.herokuapp.com/favourites';
+	const urlFav = 'https://cors-anywhere.herokuapp.com/https://cycbookshop.herokuapp.com/favourites';
+
 	const httpOptions = new  HttpHeaders()
     .set('Accept','application/json') 
-	.set('Content-type', 'application/json')
+	.set('Content-type', 'text/plain')
 	.set('Authorization',authorizationData)
-	
-	
+	.set('Access-Control-Allow-Origin','*')
+	.set('Access-Control-Allow-Credentials', 'true')
+	//.set('Access-Control-Request-Method', 'GET')
+      // .set('Access-Control-Request-Headers', 'Content-Type, Authorization')
 /*
  const httpOptions = {
 	 headers:new HttpHeaders({
     'Content-Type':  'text/plain',
-    'Authorization':authorizationData
+    'Authorization':authorizationDat a,
+	
   })
  };
  
  */
-console.log(JSON.stringify(httpOptions))
+    console.log(JSON.stringify(httpOptions))
 
     return this.http.get(urlFav,{headers:httpOptions});
 	
