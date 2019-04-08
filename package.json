@@ -9,6 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
+  "directories": { "output": "release/" },
   "private": true,
   "dependencies": {
     "@angular/animations": "~7.2.0",
