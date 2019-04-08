@@ -25,7 +25,7 @@ getFav() {
 
 	const httpOptions = new  HttpHeaders()
     .set('Accept','application/json') 
-	.set('Content-type', 'text/plain')
+	.set('Content-type', 'application/json')
 	.set('Authorization',authorizationData)
 	.set('Access-Control-Allow-Origin', '*')
 	
