@@ -22,12 +22,10 @@ getFav() {
 	let authorizationData = 'Basic '+  btoa('cycheng:123456');
 	console.log(authorizationData);
 	const urlFav = 'https://cycbookshop.herokuapp.com/favourites';
-
 	const httpOptions = new  HttpHeaders()
     .set('Accept','application/json') 
 	.set('Content-type', 'application/json')
 	.set('Authorization',authorizationData)
-	.set('Access-Control-Allow-Origin', '*')
 	
 	
 /*
