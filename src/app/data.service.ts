@@ -4,6 +4,7 @@ import {HttpEvent, HttpInterceptor, HttpHandler, HttpRequest} from '@angular/com
 import { HttpClient } from '@angular/common/http'; // Import it up here
 import { HttpHeaders } from '@angular/common/http';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -14,42 +15,38 @@ export class DataService {
 
 
 
-  constructor(private http: HttpClient) { }
+constructor(private http: HttpClient) { }
 
-getFav() {
-	let authorizationData = 'Basic '+  btoa('cycheng:123456');
+  
+  logflag =false;
+ 
+  login_getFav(username:string,password:string, choice:number) {
+  const urlLogin = 'https://cors-anywhere.herokuapp.com/https://cycbookshop.herokuapp.com/login';
+  const urlFav = 'https://cors-anywhere.herokuapp.com/https://cycbookshop.herokuapp.com/favourites';
+  let authorizationData = 'Basic '+  btoa(`${username}:${password}`);
 	console.log(authorizationData);
-	const urlFav = 'https://cors-anywhere.herokuapp.com/https://cycbookshop.herokuapp.com/favourites';
+	
 
 	const httpOptions = new  HttpHeaders()
     .set('Accept','application/json') 
 	.set('Content-type', 'text/plain')
-	.set('Authorization',authorizationData)
+	.set('Authorization',`${authorizationData}`)
 	.set('Access-Control-Allow-Origin','*')
 	.set('Access-Control-Allow-Credentials', 'true')
-	//.set('Access-Control-Request-Method', 'GET')
-      // .set('Access-Control-Request-Headers', 'Content-Type, Authorization')
-/*
- const httpOptions = {
-	 headers:new HttpHeaders({
-    'Content-Type':  'text/plain',
-    'Authorization':authorizationDat a,
 	
-  })
- };
- 
- */
-    console.log(JSON.stringify(httpOptions))
-
-    return this.http.get(urlFav,{headers:httpOptions});
+    console.log(JSON.stringify(httpOptions));
+    let urlc='';
+	   if(choice ==1)
+	    urlc=urlLogin;
+	   else	(choice==2)
+	     urlc=urlFav;
+    
+	return this.http.get(urlc,{headers:httpOptions});
 	
 	}
 
- 
 getBooks(word:string) {
-	
-return this.http.get(`https://cycbookshop.herokuapp.com/booksearch?q=${word}`)
+	return this.http.get(`https://cycbookshop.herokuapp.com/booksearch?q=${word}`)
  }
  
-
 }

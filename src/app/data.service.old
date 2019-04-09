@@ -1,0 +1,57 @@
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import {HttpEvent, HttpInterceptor, HttpHandler, HttpRequest} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http'; // Import it up here
+import { HttpHeaders } from '@angular/common/http';
+
+@Injectable({
+  providedIn: 'root'
+})
+
+
+export class DataService {
+
+  constructor(private http: HttpClient) {}
+  
+  const urlLogin = 'https://cycbookshop.herokuapp.com/login';
+  const urlFav = 'https://cycbookshop.herokuapp.com/favourites';
+  let logflag =false;
+  
+  getBooks(word:string) {
+    return this.http.get(`https://cycbookshop.herokuapp.com/booksearch?q=${word}`)
+  } //no login required
+  
+   
+  userlogin_getFav(username:string,password:string, choice:number){
+  
+	let authorizationData = 'Basic '+  btoa(`${username}:${password}`);
+	console.log(authorizationData);
+    
+	const httpOptions = new  HttpHeaders()
+      .set('Accept','application/json') 
+	  .set('Content-type', 'text/plain')
+	  .set('Authorization',authorizationData)
+	  .set('Access-Control-Allow-Origin','*')
+	  .set('Access-Control-Allow-Credentials', 'true');
+	  
+	   let setFlagTrue ()=> 
+	   return {this.logflag=true};
+	
+	   let checkFlag()=> return {this.logflag};
+  	   let url:string
+	   if(choice)==1
+	    url=this.urlLogin;
+	   else	(choice)==2
+	    url=this.urlFav;
+	  
+	  return this.http.get(url,{headers:httpOptions});
+     
+   }   // userlogin_getFav function  
+   
+   } // DataService
+	
+
+  
+	  	
+ 
+ } // end data service

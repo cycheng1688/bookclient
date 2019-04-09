@@ -20,7 +20,8 @@ clickMessage = '';
   constructor(private data: DataService) { }
 
   ngOnInit() {
-  this.data.getFav().subscribe(data=>{
+  console.log('im in Fav')
+  this.data.login_getFav('cycheng','123456',2).subscribe(data=>{
   this.books = data;			
   console.log(this.books)
  
