@@ -1,7 +1,8 @@
 var HttpsProxyAgent = require('https-proxy-agent');
 var proxyConfig = [{
   context: '/api',
-  target: 'https://cycheng1688.github.io/bookclient/', //localhost:4200
+ // target: 'https://cycheng1688.github.io/bookclient/',
+  target:'localhost:4200',
   secure: false
 }];
 

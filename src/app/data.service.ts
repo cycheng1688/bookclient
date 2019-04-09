@@ -38,9 +38,10 @@ constructor(private http: HttpClient) { }
     let urlc='';
 	   if(choice ==1)
 	    urlc=urlLogin;
-	   else	(choice==2)
+	   else	
 	     urlc=urlFav;
-    
+    console.log(urlc,' ',choice)
+	
 	return this.http.get(urlc,{headers:httpOptions});
 	
 	}

@@ -3,15 +3,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DataService } from '../data.service'; 
 @Component({
   selector: 'app-login',
- templateUrl: './about.component.html',
-  styleUrls: ['./about.component.scss'],
-//  template:`
-//  <ul *ngIf="message">
- //  <h3>{{JSON.stringfiy(message)}}</h3>
-//</ul>
+  templateUrl: './about.component.html',
+  styleUrls: ['./about.component.scss']
+   
   
- // `
-})
+  })
 export class AboutComponent implements OnInit {
 
   message:object;
@@ -29,7 +25,7 @@ export class AboutComponent implements OnInit {
        this.data.login_getFav(this.messageForm.controls.name.value,this.messageForm.controls.password.value, 1)
 	   .subscribe(data=>{
           this.message = data;			
-      //  console.log(this.message)
+       console.log(this.message)
        this.success = true; 
 	})
 	}
