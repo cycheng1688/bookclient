@@ -81,7 +81,7 @@ addFav(username:string, password:string,i:number,book:Object,choice:number) //1:
    //}
   //}
 	//console.log('body '+data)	
-	   return this.http.post(Fav,`${data}`,{headers:httpOptions})
+	   return this.http.post(Fav,`${body}`,{headers:httpOptions})
 	 
 	}
 	

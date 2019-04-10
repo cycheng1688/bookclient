@@ -23,7 +23,7 @@ clickMessage = '';
    
    ngOnInit() {
    
-     if(this.session)
+     if(this.session&&this.session.getItem("username")!=null)
      {	
 	  console.log(this.session.getItem("success"))
 	  console.log(this.session.getItem("username"))
