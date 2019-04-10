@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
+import { MySessionService} from '../session-storage.service';
 @Component({
   selector: 'app-inputtext',
   template: `
@@ -21,7 +22,7 @@ export class InputtextComponent {
 
 clickMessage = '';
 books:Object;
-  constructor(private data: DataService) { }
+  constructor(private data: DataService,private session: MySessionService) { }
 
  addSearch(newSearch:string){
 	if(newSearch!=''){

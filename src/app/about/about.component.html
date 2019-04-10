@@ -1,22 +1,27 @@
 <h1>Welcome to Login Page</h1> 
  <h2 *ngIf="success">{{message}}</h2> 
-<form  [formGroup]="messageForm" (ngSubmit)="onSubmit()"> 
+<div *ngIf="!success">
+ <form  [formGroup]="messageForm" (ngSubmit)="onSubmit()"> 
  
     <h2 *ngIf="success">{{message}}</h2> 
  
-    <label>   <strong>    Username:  :</strong> 
-	<input type="text" style="font-size:16px" formControlName="name" maxlength='10'>       
+      <strong>    Username:  </strong> 
+	<input type="text" style="font-size:16px" formControlName="name" maxlength='10'> 
+<Button>New User (register here)</Button>	
 	<div *ngIf="submitted && messageForm.controls.name.errors" class="error">         
 	<div *ngIf="messageForm.controls.name.errors.required">Your name is required</div>       
-	</div>     </label>        <label>   <strong >   Password:  </strong>     
+	</div>       <br>
+	<br>    <strong >   Password:   </strong>     
 	<input type="text" style="font-size:16px" formControlName="password"  maxlength='10'>       
 	<div *ngIf="submitted && messageForm.controls.password.errors" class="error">        
 	<div *ngIf="messageForm.controls.password.errors.required">A password is required
-	</div>       </div>     </label> 
+	</div>       </div>     <br>
 
     <input type="submit" value="Submit" class="cta">      </form> 
  
-    <div *ngIf="submitted" class="results">     
+    <div *ngIf="submitted" class="results">   </div> 
+
+	</div> 
 
 
   

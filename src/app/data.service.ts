@@ -21,10 +21,10 @@ constructor(private http: HttpClient) { }
   logflag =false;
  
   login_getFav(username:string,password:string, choice:number) {
-  const urlLogin = 'https://cors-anywhere.herokuapp.com/https://cycbookshop.herokuapp.com/login';
-  const urlFav = 'https://cors-anywhere.herokuapp.com/https://cycbookshop.herokuapp.com/favourites';
-  let authorizationData = 'Basic '+  btoa(`${username}:${password}`);
-	console.log(authorizationData);
+	const urlLogin = 'https://cors-anywhere.herokuapp.com/https://cycbookshop.herokuapp.com/login';
+	const urlFav = 'https://cors-anywhere.herokuapp.com/https://cycbookshop.herokuapp.com/favourites';
+	let authorizationData = 'Basic '+  btoa(`${username}:${password}`);
+		console.log(authorizationData);
 	
 
 	const httpOptions = new  HttpHeaders()
@@ -44,10 +44,10 @@ constructor(private http: HttpClient) { }
 	
 	return this.http.get(urlc,{headers:httpOptions});
 	
-	}
+	} // end login_getFav
 
 getBooks(word:string) {
 	return this.http.get(`https://cycbookshop.herokuapp.com/booksearch?q=${word}`)
- }
+ }//end getBooks
  
-}
+ }

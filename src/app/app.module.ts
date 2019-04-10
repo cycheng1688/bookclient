@@ -9,6 +9,9 @@ import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { InputtextComponent } from './inputtext/inputtext.component';
 import { ReactiveFormsModule } from '@angular/forms'; 
+import { SESSION_STORAGE } from 'ngx-webstorage-service';
+
+
 
 @NgModule({
   declarations: [
@@ -23,9 +26,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
 	HttpClientModule,
-	ReactiveFormsModule
+	ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [ ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
