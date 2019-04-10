@@ -11,7 +11,7 @@ import { MySessionService} from '../session-storage.service';
     <button (click)="addSearch(newSearch.value)">Search</button><p>{{clickMessage}}</p>
 <ul *ngIf="books">
 <li *ngFor="let book of books; index as i">
-<h3>{{ book.title }} <button (click)="addFav(i, books)">Add to Favourites</button></h3>
+<h3>{{ book.title }} <button (click)="addFavHandler(i, books,1)">Add to Favourites</button></h3>
 <p>{{ book.description}} </p>
 </li>
 </ul>
@@ -30,14 +30,31 @@ books:Object;
   
   this.books = data;			
 //  console.log(this.books)
-})
-}
- }
+	})
+	}
+  }
  
-addFav(i:number,book:Object)
-{
-this.clickMessage = `Need to login first!  book with title: ${book[i].title} is pressed!`;
-console.log("Need to login first")
+addFavHandler(i:number,book:Object,choice:number)
+{if(this.session&&this.session.getItem("username")!=null)
+	{ 
+     let a=this.session.getItem("username")
+	 let b=this.session.getItem("password")
+	 let id =i
+	 let bookfav=book
+	 console.log('a '+a)
+	 console.log('b '+b)
+	 console.log(id)
+	 console.log(bookfav)
+	 this.data.addFav(`${a}`,`${b}`, id, bookfav,1).subscribe(data=>{
+  
+    this.books = data;	
+    this.clickMessage =  JSON.stringify(this.books);
+   //  console.log(this.books)
+	})}
+else {
+   this.clickMessage = `Need to login first!  book with title: ${book[i].title} is pressed!`;
+   console.log("Need to login first")
+	}
 }
 }
 

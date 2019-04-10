@@ -12,19 +12,18 @@ import { HttpHeaders } from '@angular/common/http';
 
 export class DataService {
 
-
-
-
+   
 constructor(private http: HttpClient) { }
 
-  
-  logflag =false;
  
-  login_getFav(username:string,password:string, choice:number) {
+  login_getFav(username:string,password:string, choice:number) //1:login 2:get Fav
+  {
 	const urlLogin = 'https://cors-anywhere.herokuapp.com/https://cycbookshop.herokuapp.com/login';
 	const urlFav = 'https://cors-anywhere.herokuapp.com/https://cycbookshop.herokuapp.com/favourites';
+	
 	let authorizationData = 'Basic '+  btoa(`${username}:${password}`);
-		console.log(authorizationData);
+	  //  console.log(`${username}:${password}`+' '+choice);
+	  //  console.log(authorizationData);
 	
 
 	const httpOptions = new  HttpHeaders()
@@ -42,10 +41,57 @@ constructor(private http: HttpClient) { }
 	     urlc=urlFav;
     console.log(urlc,' ',choice)
 	
-	return this.http.get(urlc,{headers:httpOptions});
+	
+	return this.http.get(urlc,{headers:httpOptions}); //login or get list of Fav
 	
 	} // end login_getFav
 
+addFav(username:string, password:string,i:number,book:Object,choice:number) //1:add Fav, 2:edit 3:del
+{   const Fav = 'https://cors-anywhere.herokuapp.com/https://cycbookshop.herokuapp.com/favourites';
+	 let authorizationData = 'Basic '+  btoa(`${username}:${password}`);
+	   console.log(`${username}:${password}`+' '+choice);
+	   console.log(authorizationData);
+	
+
+	const httpOptions = new  HttpHeaders()
+    .set('Accept','application/json') 
+	.set('Content-type', 'application/json')
+	.set('Authorization',`${authorizationData}`)
+	.set('Access-Control-Allow-Origin','*')
+	.set('Access-Control-Allow-Credentials', 'true')
+	
+	if (choice==1) //add Fav
+	{  console.log('i m chose post')
+	   console.log('index '+i)
+	   console.log('book '+book)
+	   console.log(`book with id: ${book[i].id} is pressed!`)
+	   console.log(`book with title: ${book[i].title} is pressed!`)
+	   let body = {'id': `${book[i].id}`,            
+			   'title':`${book[i].title}`,
+			   'authors':`${book[i].authors}`,
+			   'description':`${book[i].description}`
+	         }
+		let	data=JSON.stringify(body)
+			 console.log('body '+data)
+			 
+//	let data = [];
+ // for(let key in body){
+ // if(body.hasOwnProperty(key)){
+   // data.push(body[key]);
+   //}
+  //}
+	//console.log('body '+data)	
+	   return this.http.post(Fav,`${data}`,{headers:httpOptions})
+	 
+	}
+	
+	if (choice==2) //edit Fav
+	   return this.http.put(Fav,{headers:httpOptions})
+	
+	if (choice==3) //del Fav
+	   return this.http.delete(Fav,{headers:httpOptions})
+
+}// end addFav
 getBooks(word:string) {
 	return this.http.get(`https://cycbookshop.herokuapp.com/booksearch?q=${word}`)
  }//end getBooks

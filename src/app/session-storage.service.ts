@@ -20,11 +20,11 @@ export class MySessionService {
 				this.sessiondata[key]= this.session.get(key);
 			}
  
-			 getItem(key): void {
-				this.sessiondata[key]= this.session.get(key);
+			 getItem(key): string {
+			    this.sessiondata[key]= this.session.get(key);
 				console.log('recieved= key:' + key + ' value:' + this.session.get(key));
 				console.log('OK')
-				
+				return this.sessiondata[key]
 			}
 			
  

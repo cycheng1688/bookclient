@@ -28,12 +28,13 @@ clickMessage = '';
 	  console.log(this.session.getItem("success"))
 	  console.log(this.session.getItem("username"))
 	  console.log(this.session.getItem("password"))
-	// let a=this.session.getItem("username")
-	// let b=this.session.getItem("password")
+	  console.log('i in contact')
+	 let a=this.session.getItem("username")
+	 let b=this.session.getItem("password")
+	  console.log('a '+ a+' '+b)
+//`${this.session.getItem("username")}`,`${this.session.getItem("password")}`
 	 
-
-	 
-	this.data.login_getFav(`${this.session.getItem("username")}`,`${this.session.getItem("password")}`,2).subscribe(data=>{
+	this.data.login_getFav(`${a}`,`${b}`,2).subscribe(data=>{
 	this.books = data;			
 	console.log(this.books);
 	 })
