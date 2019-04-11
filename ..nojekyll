@@ -11,6 +11,3 @@ git push origin master
 https://angular.io/guide/deployment
 
 ng build --prod --base-href "https://cycheng1688.github.io/bookclient/"
-
-git push origin :gh-pages
-git push origin gh-pages

@@ -69,12 +69,14 @@ clickMessage = '';
     else {
      this.clickMessage = `Need to login first!  Book with title: ${book[i].title} is pressed!`;
      console.log("Need to login first")
+	 this.ngOnInit()
 	}
    }
 	editFavHandler(i:number,book:Object)
 	{
 		this.clickMessage = `Sorry this function not implemented yet!  Book with title: ${book[i].title} will be edited!`;
 		console.log("Need to login first")
+		this.ngOnInit()
 	}
 
 }

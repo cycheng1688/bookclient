@@ -1,10 +1,10 @@
 var HttpsProxyAgent = require('https-proxy-agent');
 var proxyConfig = [{
   context: '/api',
- //target: 'https://cycheng1688.github.io/bookclient/',
-  target:'localhost:4200',
-  secure: false
-}];
+    target: 'https://cycheng1688.github.io/bookclient/',
+   // target:'localhost:4200',
+secure: false}
+  ];
 
 function setupForCorporateProxy(proxyConfig) {
   var proxyServer = process.env.http_proxy || process.env.HTTP_PROXY;
