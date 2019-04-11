@@ -18,8 +18,10 @@ constructor(private http: HttpClient) { }
  
   login_getFav(username:string,password:string, choice:number) //1:login 2:get Fav
   {
-	const urlLogin = 'https://cors-anywhere.herokuapp.com/https://cycbookshop.herokuapp.com/login';
-	const urlFav = 'https://cors-anywhere.herokuapp.com/https://cycbookshop.herokuapp.com/favourites';
+    //const urlLogin = 'https://cycbookshop.herokuapp.com/login';
+	//const urlFav = 'https://cycbookshop.herokuapp.com/favourites';
+     const urlLogin = 'https://cors-anywhere.herokuapp.com/https://cycbookshop.herokuapp.com/login';
+	 const urlFav = 'https://cors-anywhere.herokuapp.com/https://cycbookshop.herokuapp.com/favourites';
 	
 	let authorizationData = 'Basic '+  btoa(`${username}:${password}`);
 	  //  console.log(`${username}:${password}`+' '+choice);
@@ -47,7 +49,8 @@ constructor(private http: HttpClient) { }
 	} // end login_getFav
 
 addFav(username:string, password:string,i:number,book:Object,choice:number) //1:add Fav, 2:edit 3:del
-{   const Fav = 'https://cors-anywhere.herokuapp.com/https://cycbookshop.herokuapp.com/favourites';
+{    //const Fav = 'https://cycbookshop.herokuapp.com/favourites';
+      var Fav = 'https://cors-anywhere.herokuapp.com/https://cycbookshop.herokuapp.com/favourites';
 	 let authorizationData = 'Basic '+  btoa(`${username}:${password}`);
 	   console.log(`${username}:${password}`+' '+choice);
 	   console.log(authorizationData);
@@ -59,29 +62,21 @@ addFav(username:string, password:string,i:number,book:Object,choice:number) //1:
 	.set('Authorization',`${authorizationData}`)
 	.set('Access-Control-Allow-Origin','*')
 	.set('Access-Control-Allow-Credentials', 'true')
+	.set('X-Requested-With', 'HttpRequest')
 	
 	if (choice==1) //add Fav
-	{  console.log('i m chose post')
+	{   
 	   console.log('index '+i)
 	   console.log('book '+book)
 	   console.log(`book with id: ${book[i].id} is pressed!`)
 	   console.log(`book with title: ${book[i].title} is pressed!`)
-	   let body = {'id': `${book[i].id}`,            
+	   
+
+	   return this.http.post(Fav,{'id': `${book[i].id}`,            
 			   'title':`${book[i].title}`,
 			   'authors':`${book[i].authors}`,
 			   'description':`${book[i].description}`
-	         }
-		let	data=JSON.stringify(body)
-			 console.log('body '+data)
-			 
-//	let data = [];
- // for(let key in body){
- // if(body.hasOwnProperty(key)){
-   // data.push(body[key]);
-   //}
-  //}
-	//console.log('body '+data)	
-	   return this.http.post(Fav,`${body}`,{headers:httpOptions})
+	         },{headers:httpOptions})
 	 
 	}
 	
@@ -89,11 +84,13 @@ addFav(username:string, password:string,i:number,book:Object,choice:number) //1:
 	   return this.http.put(Fav,{headers:httpOptions})
 	
 	if (choice==3) //del Fav
-	   return this.http.delete(Fav,{headers:httpOptions})
+	  {Fav=Fav +`/${book[i].id}`
+	   return this.http.delete(Fav,{headers:httpOptions})}
+     
+  }// end addFav
 
-}// end addFav
-getBooks(word:string) {
+ getBooks(word:string) {
 	return this.http.get(`https://cycbookshop.herokuapp.com/booksearch?q=${word}`)
- }//end getBooks
+  }//end getBooks
  
- }
+ } // End DataService

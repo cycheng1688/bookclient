@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MySessionService} from '../session-storage.service';
 
 @Component({
   selector: 'app-nav',
@@ -7,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 appTitle = 'Bookshop';
-Login_Register ='Login/Register';
-  constructor() { }
+
+  constructor(private session: MySessionService) { }
 
   ngOnInit() {
+  
+  
   }
 
 }

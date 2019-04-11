@@ -46,10 +46,10 @@ addFavHandler(i:number,book:Object,choice:number)
 	 console.log(id)
 	 console.log(bookfav)
 	 this.data.addFav(`${a}`,`${b}`, id, bookfav,1).subscribe(data=>{
-  
-    this.books = data;	
-    this.clickMessage =  JSON.stringify(this.books);
-   //  console.log(this.books)
+     //this.books = JSON.stringify(data);	//error mapping as object return not array
+      
+     this.clickMessage =` Book with title: ${book[i].title} is saved!`
+	console.log('OK-book saved')
 	})}
 else {
    this.clickMessage = `Need to login first!  book with title: ${book[i].title} is pressed!`;

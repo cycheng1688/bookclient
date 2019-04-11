@@ -33,11 +33,11 @@ export class AboutComponent implements OnInit {
 	   this.session.setItem("success", `${this.success}`);
 	   this.session.setItem("username", `${this.messageForm.controls.name.value}`);
 	   this.session.setItem("password", `${this.messageForm.controls.password.value}`);
-	  console.log('session set')
+	 
 	  console.log(this.session.getItem("success"))
 	  console.log(this.session.getItem("username"))
 	  console.log(this.session.getItem("password"))
-	   console.log('session get in about')
+	   
 	})
   }
 }
