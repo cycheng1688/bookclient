@@ -11,7 +11,7 @@ import { MySessionService} from '../session-storage.service';
     <button (click)="addSearch(newSearch.value)">Search</button><p>{{clickMessage}}</p>
 <ul *ngIf="books">
 <li *ngFor="let book of books; index as i">
-<h3>{{ book.title }} <button (click)="addFavHandler(i, books,1)">Add to Favourites</button></h3>
+<h3>{{ book.title }} <button (click)="addFavHandler(i, books,1)">  Add to Favourites</button></h3>
 <p>{{ book.description}} </p>
 </li>
 </ul>

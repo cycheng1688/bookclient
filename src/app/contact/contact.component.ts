@@ -8,7 +8,7 @@ import { MySessionService} from '../session-storage.service';
 <p>{{clickMessage}}</p> 
 <ul *ngIf="books"><p></p>
 <li *ngFor="let book of books.favourites; index as i">
-<h3>{{ book.title }}  <button (click)="delFavHandler(i,books.favourites)"> Delete</button><button (click)="editFavHandler(i,books.favourites)">Edit Review</button></h3>
+<h3>{{ book.title }}  <button (click)="delFavHandler(i,books.favourites)">  Delete</button><button (click)="editFavHandler(i,books.favourites)">Edit Review</button></h3>
 <p>{{ book.description}} </p>
 <p><<textarea rows="2" cols="50">Enter your review here</textarea> </p>
 </li>
@@ -49,16 +49,16 @@ clickMessage = '';
    }
   
 	delFavHandler(i:number,book:Object,choice:number)
-	{if(this.session&&this.session.getItem("username")!=null)
+	{if(this.session.getItem("username")!=null)
 	{ 
      let a=this.session.getItem("username")
 	 let b=this.session.getItem("password")
 	 let id =i
 	 let bookfav=book
-	 console.log('a '+a)
-	 console.log('b '+b)
-	 console.log(id)
-	 console.log(bookfav)
+	 //console.log('a '+a)
+	 //console.log('b '+b)
+	 //console.log(id)
+	 //console.log(bookfav)
 	 this.data.addFav(`${a}`,`${b}`, id, bookfav,3).subscribe(data=>{
      //this.books = JSON.stringify(data);	//error mapping as object return not array
       

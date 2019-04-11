@@ -18,8 +18,7 @@ constructor(private http: HttpClient) { }
  
   login_getFav(username:string,password:string, choice:number) //1:login 2:get Fav
   {
-    //const urlLogin = 'https://cycbookshop.herokuapp.com/login';
-	//const urlFav = 'https://cycbookshop.herokuapp.com/favourites';
+    
      const urlLogin = 'https://cors-anywhere.herokuapp.com/https://cycbookshop.herokuapp.com/login';
 	 const urlFav = 'https://cors-anywhere.herokuapp.com/https://cycbookshop.herokuapp.com/favourites';
 	
@@ -49,7 +48,7 @@ constructor(private http: HttpClient) { }
 	} // end login_getFav
 
 addFav(username:string, password:string,i:number,book:Object,choice:number) //1:add Fav, 2:edit 3:del
-{    //const Fav = 'https://cycbookshop.herokuapp.com/favourites';
+{   
       var Fav = 'https://cors-anywhere.herokuapp.com/https://cycbookshop.herokuapp.com/favourites';
 	 let authorizationData = 'Basic '+  btoa(`${username}:${password}`);
 	   console.log(`${username}:${password}`+' '+choice);

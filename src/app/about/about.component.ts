@@ -27,7 +27,7 @@ export class AboutComponent implements OnInit {
     if (this.messageForm.invalid) { return;} 
        this.data.login_getFav(this.messageForm.controls.name.value,this.messageForm.controls.password.value, 1)
 	   .subscribe(data=>{
-          this.message = data;			
+           this.message = data;			
        console.log(this.message)
        this.success = true;
 	   this.session.setItem("success", `${this.success}`);
