@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable, throwError } from 'rxjs';
+import { retry, catchError } from 'rxjs/operators';
 import {HttpEvent, HttpInterceptor, HttpHandler, HttpRequest} from '@angular/common/http';
 import { HttpClient } from '@angular/common/http'; // Import it up here
 import { HttpHeaders } from '@angular/common/http';
@@ -43,7 +44,10 @@ constructor(private http: HttpClient) { }
     console.log(urlc,' ',choice)
 	
 	
-	return this.http.get(urlc,{headers:httpOptions}); //login or get list of Fav
+	return this.http.get(urlc,{headers:httpOptions}).pipe(
+       retry(1),
+       catchError(this.handleError)
+     );; //login or get list of Fav
 	
 	} // end login_getFav
 
@@ -75,7 +79,10 @@ addFav(username:string, password:string,i:number,book:Object,choice:number) //1:
 			   'title':`${book[i].title}`,
 			   'authors':`${book[i].authors}`,
 			   'description':`${book[i].description}`
-	         },{headers:httpOptions})
+	         },{headers:httpOptions}).pipe(
+       retry(1),
+       catchError(this.handleError)
+     );
 	 
 	}
 	
@@ -89,7 +96,23 @@ addFav(username:string, password:string,i:number,book:Object,choice:number) //1:
   }// end addFav
 
  getBooks(word:string) {
-	return this.http.get(`https://cycbookshop.herokuapp.com/booksearch?q=${word}`)
+	return this.http.get(`https://cycbookshop.herokuapp.com/booksearch?q=${word}`).pipe(
+       retry(1),
+       catchError(this.handleError)
+     );
   }//end getBooks
+ 
+  handleError(error) {
+   let errorMessage = '';
+   if (error.error instanceof ErrorEvent) {
+     // client-side error
+     errorMessage = `Error: ${error.error.message}`;
+   } else {
+     // server-side error
+     errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+   }
+   window.alert(errorMessage);
+   return throwError(errorMessage);
+ }
  
  } // End DataService

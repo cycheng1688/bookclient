@@ -8,7 +8,7 @@ import { MySessionService} from '../session-storage.service';
       (keyup.enter)="addSearch(newSearch.value)"
       (blur)="addSearch(newSearch.value); newSearch.value='' ">
 
-    <button (click)="addSearch(newSearch.value)">Search</button><p>{{clickMessage}}</p>
+    <button (click)="addSearch(newSearch.value)">Search</button>
 <ul *ngIf="books">
 <li *ngFor="let book of books; index as i">
 <h3>{{ book.title }} <button (click)="addFavHandler(i, books,1)">  Add to Favourites</button></h3>
@@ -49,11 +49,11 @@ addFavHandler(i:number,book:Object,choice:number)
      //this.books = JSON.stringify(data);	//error mapping as object return not array
       
      this.clickMessage =` Book with title: ${book[i].title} is saved!`
-	console.log('OK-book saved')
+	window.alert( this.clickMessage)
 	})}
 else {
    this.clickMessage = `Need to login first!  book with title: ${book[i].title} is pressed!`;
-   console.log("Need to login first")
+   window.alert( this.clickMessage)
 	}
 }
 }

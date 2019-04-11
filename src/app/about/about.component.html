@@ -7,7 +7,7 @@
  
       <strong>    Username:  </strong> 
 	<input type="text" style="font-size:16px" formControlName="name" maxlength='10'> 
-<Button>New User (register here)</Button>	
+  
 	<div *ngIf="submitted && messageForm.controls.name.errors" class="error">         
 	<div *ngIf="messageForm.controls.name.errors.required">Your name is required</div>       
 	</div>       <br>
@@ -17,14 +17,13 @@
 	<div *ngIf="messageForm.controls.password.errors.required">A password is required
 	</div>       </div>     <br>
 
-    <input type="submit" value="Submit" class="cta">      </form> 
+    <input type="submit" value="Submit" class="cta">  </form> 
  
     <div *ngIf="submitted" class="results">   </div> 
 
 	</div> 
 
-
-  
+ 
 
 
 

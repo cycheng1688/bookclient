@@ -5,7 +5,7 @@ import { MySessionService} from '../session-storage.service';
 @Component({
   selector: 'app-myfav',
   template: `
-<p>{{clickMessage}}</p> 
+ 
 <ul *ngIf="books"><p></p>
 <li *ngFor="let book of books.favourites; index as i">
 <h3>{{ book.title }}  <button (click)="delFavHandler(i,books.favourites)">  Delete</button><button (click)="editFavHandler(i,books.favourites)">Edit Review</button></h3>
@@ -44,7 +44,7 @@ clickMessage = '';
 	 else // endif
 	 {
 		this.clickMessage = `Sorry! Need to login first! `;
-		console.log("Need to login first")
+		window.alert( this.clickMessage)
 	}
    }
   
@@ -63,19 +63,19 @@ clickMessage = '';
      //this.books = JSON.stringify(data);	//error mapping as object return not array
       
      this.clickMessage =` Book with title: ${book[i].title} is deleted!`
-	 console.log('OK-book deleted')
+	 window.alert( this.clickMessage)
 	 this.ngOnInit()
 	})}
     else {
      this.clickMessage = `Need to login first!  Book with title: ${book[i].title} is pressed!`;
-     console.log("Need to login first")
+     window.alert( this.clickMessage)
 	 this.ngOnInit()
 	}
    }
 	editFavHandler(i:number,book:Object)
 	{
 		this.clickMessage = `Sorry this function not implemented yet!  Book with title: ${book[i].title} will be edited!`;
-		console.log("Need to login first")
+		window.alert( this.clickMessage)
 		this.ngOnInit()
 	}
 
