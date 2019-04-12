@@ -18,12 +18,16 @@ export class AboutComponent implements OnInit {
 
 	ngOnInit() { this.messageForm = this.formBuilder.group({ 
               name: ['', Validators.required],       
-			  password: ['', Validators.required]  });
+			  password: ['', Validators.required], 
+			  fname: ['', Validators.required],
+		      lname: ['', Validators.required],
+		      uname: ['', Validators.required],
+			  email: ['', Validators.required],			  });
 	
-} 
+      } 
  
  onSubmit() {     this.submitted = true; 
- 
+                
     if (this.messageForm.invalid) { return;} 
        this.data.login_getFav(this.messageForm.controls.name.value,this.messageForm.controls.password.value, 1)
 	   .subscribe(data=>{

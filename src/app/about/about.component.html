@@ -8,24 +8,32 @@
       <strong>    Username:  </strong> <br>
 	<input type="text" style="font-size:16px" formControlName="name" maxlength='10'> 
   
-	<div *ngIf="submitted && messageForm.controls.name.errors" class="error">         
+	<div *ngIf="submitted && messageForm.controls.name.errors&&messageForm.controls.fname.errors" class="error">         
 	<div *ngIf="messageForm.controls.name.errors.required">Your name is required</div>       
 	</div>       <br>
 	<strong >   Password:   </strong> <br>    
 	<input type="text" style="font-size:16px" formControlName="password"  maxlength='10'> <br>      
-	<div *ngIf="submitted && messageForm.controls.password.errors" class="error">        
+	<div *ngIf="submitted && messageForm.controls.password.errors&&messageForm.controls.fname.errors" class="error">        
 	<div *ngIf="messageForm.controls.password.errors.required">A password is required
 	</div>       </div>     <br><hr>
 	<label><h3><font color="red">New User Sign Up  </font></h3></label>
     <strong>    First Name:  </strong> <br>
-	<input type="text" style="font-size:16px"   maxlength='10'> <br>
+	<input type="text" style="font-size:16px"  formControlName="fname" maxlength='10'> <br>
+	<div *ngIf="submitted && messageForm.controls.name.errors" class="error">         
+	<div *ngIf="messageForm.controls.name.errors.required">First name is required</div></div>      
 	<strong>    Last Name:  	</strong>  <br>
-	<input type="text" style="font-size:16px"   maxlength='10'> <br>
+	<input type="text" style="font-size:16px"   formControlName="lname" maxlength='10'> <br>
+	<div *ngIf="submitted && messageForm.controls.name.errors" class="error">         
+	<div *ngIf="messageForm.controls.name.errors.required">Last name is required</div></div>       
 	<strong>    User Name:  	</strong>  <br>
-	<input type="text" style="font-size:16px"   maxlength='10'> <br>
-	<strong>    Email: 			 </strong>  <br>
-	<input type="text" style="font-size:16px"   maxlength='10'> <br><hr>
-    <input type="submit" value="Submit" class="cta">  </form> 
+	<input type="text" style="font-size:16px"  formControlName="uname" maxlength='10'> <br>
+	<div *ngIf="submitted && messageForm.controls.name.errors" class="error">         
+	<div *ngIf="messageForm.controls.name.errors.required">Username is required</div> </div>     
+	<strong>    Email: 			 </strong>  <br>       
+	<input type="text" style="font-size:16px"  formControlName="email" maxlength='10'> <br><hr>
+    <div *ngIf="submitted && messageForm.controls.name.errors" class="error">         
+	<div *ngIf="messageForm.controls.name.errors.required">An valid email is required</div></div>
+	<input type="submit" value="Submit" class="cta">  </form> 
  
     <div *ngIf="submitted" class="results">   </div> 
 
