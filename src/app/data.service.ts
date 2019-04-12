@@ -31,10 +31,11 @@ constructor(private http: HttpClient) { }
 
 	const httpOptions = new  HttpHeaders()
     .set('Accept','application/json') 
-	.set('Content-type', 'text/plain')
+	.set('Content-type', 'application/json')
 	.set('Authorization',`${authorizationData}`)
 	.set('Access-Control-Allow-Origin','*')
 	.set('Access-Control-Allow-Credentials', 'true')
+	.set('X-Requested-With', 'HttpRequest')
 	
     console.log(JSON.stringify(httpOptions));
     let urlc='';  console.log(urlc,' ',choice)
@@ -44,14 +45,15 @@ constructor(private http: HttpClient) { }
 	     urlc=urlFav;
 	   if (choice ==3)
 	    { urlc=addUser;
-		 return this.http.post(urlc,{"username":`${username}`,"password":`${password}`},{headers:httpOptions}).pipe(
+		 return this.http.post(urlc,{'username':`${username}`,
+                               		 'password':`${password}`},{headers:httpOptions}).pipe(
          retry(1),
         catchError(this.handleError)
        );}
    
 	
 	
-	return this.http.get(urlc,{headers:httpOptions}).pipe(
+	 return this.http.get(urlc,{headers:httpOptions}).pipe(
        retry(1),
        catchError(this.handleError)
      ); //login or get list of Fav

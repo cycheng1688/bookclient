@@ -32,14 +32,16 @@ export class AboutComponent implements OnInit {
  
  onRegister() { 
  
-        this.registered = true; window.alert( 'Sorry, this function not implemented yet')
+        this.registered = true; 
+		
+		// window.alert( 'Sorry, this function not implemented yet')
               
            if (this.messageForm2.invalid) { return window.alert("Invalid input!!Pls. enter again !");} 
-	/*
-	 console.log('1 m here')
+	
+	
        this.data.login_getFav(this.messageForm2.controls.uname.value,this.messageForm2.controls.upass.value, 3)
 	   .subscribe(data=>{
-           this.message = data;			
+           this.message = data ;			
        console.log(this.message)
        this.success = true;
 	   this.session.setItem("success", `${this.success}`);
@@ -53,7 +55,7 @@ export class AboutComponent implements OnInit {
 	   
 	})
 	
-	*/     //to be implemented
+	    //to be implemented
   }
   onSubmit() { 
  
@@ -73,7 +75,7 @@ export class AboutComponent implements OnInit {
 	  console.log(this.session.getItem("success"))
 	  console.log(this.session.getItem("username"))
 	  console.log(this.session.getItem("password"))
-	  console.log('all set')
+	 
 	   
 	})
   }

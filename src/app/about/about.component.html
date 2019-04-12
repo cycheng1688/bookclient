@@ -38,7 +38,7 @@
 	<div *ngIf="registered && messageForm2.controls.upass.errors" class="error">         
 	<div *ngIf="messageForm2.controls.upass.errors.required">missing a password </div> </div>     
 	<strong>    Email: 		</strong>  <br>       
-	<input type="text" style="font-size:16px"  formControlName="email" maxlength='10'> <br><hr>
+	<input type="text" style="font-size:16px"  formControlName="email" maxlength='20'> <br><hr>
     <div *ngIf="registered && messageForm2.controls.email.errors" class="error">         
 	<div *ngIf="messageForm2.controls.email.errors.required">An valid email is required</div></div>
 	<input type="submit" value="Register" class="cta"> </form> 
