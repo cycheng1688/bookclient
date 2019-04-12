@@ -17,12 +17,13 @@ export class DataService {
 constructor(private http: HttpClient) { }
 
  
-  login_getFav(username:string,password:string, choice:number) //1:login 2:get Fav
+  login_getFav(username:string,password:string, choice:number) //1:login 2:get Fav //3:add user
   {
     
      const urlLogin = 'https://cors-anywhere.herokuapp.com/https://cycbookshop.herokuapp.com/login';
 	 const urlFav = 'https://cors-anywhere.herokuapp.com/https://cycbookshop.herokuapp.com/favourites';
-	
+	 const addUser='https://cors-anywhere.herokuapp.com/https://cycbookshop.herokuapp.com/users'
+	 
 	let authorizationData = 'Basic '+  btoa(`${username}:${password}`);
 	  //  console.log(`${username}:${password}`+' '+choice);
 	  //  console.log(authorizationData);
@@ -36,18 +37,24 @@ constructor(private http: HttpClient) { }
 	.set('Access-Control-Allow-Credentials', 'true')
 	
     console.log(JSON.stringify(httpOptions));
-    let urlc='';
+    let urlc='';  console.log(urlc,' ',choice)
 	   if(choice ==1)
 	    urlc=urlLogin;
-	   else	
+	   if (choice ==2)
 	     urlc=urlFav;
-    console.log(urlc,' ',choice)
+	   if (choice ==3)
+	    { urlc=addUser;
+		 return this.http.post(urlc,{"username":`${username}`,"password":`${password}`},{headers:httpOptions}).pipe(
+         retry(1),
+        catchError(this.handleError)
+       );}
+   
 	
 	
 	return this.http.get(urlc,{headers:httpOptions}).pipe(
        retry(1),
        catchError(this.handleError)
-     );; //login or get list of Fav
+     ); //login or get list of Fav
 	
 	} // end login_getFav
 
