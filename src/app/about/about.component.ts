@@ -34,7 +34,7 @@ export class AboutComponent implements OnInit {
  
         this.registered = true; window.alert( 'Sorry, this function not implemented yet')
               
-           if (this.messageForm2.invalid) { return  console.log("invalid");} 
+           if (this.messageForm2.invalid) { return window.alert("invalid input! Pls. enter again !");} 
 	/*
 	 console.log('1 m here')
        this.data.login_getFav(this.messageForm2.controls.uname.value,this.messageForm2.controls.upass.value, 3)
@@ -58,8 +58,8 @@ export class AboutComponent implements OnInit {
   onSubmit() { 
  
         this.submitted = true; 
-          console.log('here')      
-    if (this.messageForm.invalid) { return  console.log("invalid");} 
+          
+    if (this.messageForm.invalid) { return  window.alert("invalid input ! Pls. enter again !");} 
 	console.log('1 m here')
        this.data.login_getFav(this.messageForm.controls.name.value,this.messageForm.controls.password.value, 1)
 	   .subscribe(data=>{
