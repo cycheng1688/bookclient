@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { InputtextComponent } from './inputtext/inputtext.component';
 import { ReactiveFormsModule } from '@angular/forms'; 
 import { SESSION_STORAGE } from 'ngx-webstorage-service';
+import { Inputtext2Component } from './inputtext2/inputtext2.component';
 
 
 
@@ -20,7 +21,8 @@ import { SESSION_STORAGE } from 'ngx-webstorage-service';
     AboutComponent,
     ContactComponent,
     HomeComponent,
-    InputtextComponent
+    InputtextComponent,
+    Inputtext2Component
   ],
   imports: [
     BrowserModule,

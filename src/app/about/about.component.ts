@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'; 
 import { DataService } from '../data.service'; 
 import { MySessionService} from '../session-storage.service';
+import {Router} from "@angular/router"
+
 @Component({
   selector: 'app-login',
   templateUrl: './about.component.html',
@@ -12,24 +14,22 @@ import { MySessionService} from '../session-storage.service';
 export class AboutComponent implements OnInit {
 
   message:object;
-  messageForm: FormGroup;   submitted = false;   success = false; messageForm2: FormGroup; registered =false;
+  messageForm: FormGroup;   submitted = false;   success = false; Newuseradded = false;messageForm2: FormGroup; registered =false;
  
-  constructor(private formBuilder: FormBuilder, private data: DataService, private session: MySessionService) { } 
+  constructor(private formBuilder: FormBuilder, private data: DataService, private session: MySessionService,private router: Router) { } 
 
 	ngOnInit() { this.messageForm = this.formBuilder.group({ 
-              name: ['', Validators.required],       
-			  password: ['', Validators.required],
-			    });
-			   this.messageForm2 = this.formBuilder.group({
+                 name: ['', Validators.required],       
+	             password: ['', Validators.required]
+			     });
+			    this.messageForm2 = this.formBuilder.group({
 			   fname: ['', Validators.required],
 		       lname: ['', Validators.required],
 		       uname: ['', Validators.required],
 			   upass: ['', Validators.required],
-			   email: ['', Validators.required],
+			   uemail: ['', Validators.required]
 			   });
-	
-      } 
- 
+	}
  onRegister() { 
  
         this.registered = true; 
@@ -44,6 +44,7 @@ export class AboutComponent implements OnInit {
            this.message = data ;			
        console.log(this.message)
        this.success = true;
+	   this.Newuseradded = true;
 	   this.session.setItem("success", `${this.success}`);
 	   this.session.setItem("uname", `${this.messageForm2.controls.uname.value}`);
 	   this.session.setItem("upass", `${this.messageForm2.controls.upass.value}`);
@@ -52,6 +53,7 @@ export class AboutComponent implements OnInit {
 	  console.log(this.session.getItem("uname"))
 	  console.log(this.session.getItem("upass"))
 	  console.log('all set')
+      this.router.navigate(['/about'])
 	   
 	})
 	
@@ -62,7 +64,6 @@ export class AboutComponent implements OnInit {
         this.submitted = true; 
           
     if (this.messageForm.invalid) { return  window.alert("Invalid input !! Pls. enter again !!");} 
-	console.log('1 m here')
        this.data.login_getFav(this.messageForm.controls.name.value,this.messageForm.controls.password.value, 1)
 	   .subscribe(data=>{
            this.message = data;			
@@ -75,6 +76,7 @@ export class AboutComponent implements OnInit {
 	  console.log(this.session.getItem("success"))
 	  console.log(this.session.getItem("username"))
 	  console.log(this.session.getItem("password"))
+	   this.router.navigate(['/contact'])
 	 
 	   
 	})

@@ -17,12 +17,12 @@ export class DataService {
 constructor(private http: HttpClient) { }
 
  
-  login_getFav(username:string,password:string, choice:number) //1:login 2:get Fav //3:add user
+  login_getFav(username:string,password:string, choice:number) //1:login 2:get Fav //3:add user //4:confirm user
   {
     
      const urlLogin = 'https://cors-anywhere.herokuapp.com/https://cycbookshop.herokuapp.com/login';
 	 const urlFav = 'https://cors-anywhere.herokuapp.com/https://cycbookshop.herokuapp.com/favourites';
-	 const addUser='https://cors-anywhere.herokuapp.com/https://cycbookshop.herokuapp.com/users'
+	 var addUser='https://cors-anywhere.herokuapp.com/https://cycbookshop.herokuapp.com/users'
 	 
 	let authorizationData = 'Basic '+  btoa(`${username}:${password}`);
 	  //  console.log(`${username}:${password}`+' '+choice);
@@ -38,7 +38,8 @@ constructor(private http: HttpClient) { }
 	.set('X-Requested-With', 'HttpRequest')
 	
     console.log(JSON.stringify(httpOptions));
-    let urlc='';  console.log(urlc,' ',choice)
+    let urlc=''; let confirmUrl=''
+	console.log(urlc,' ',choice)
 	   if(choice ==1)
 	    urlc=urlLogin;
 	   if (choice ==2)
@@ -50,10 +51,15 @@ constructor(private http: HttpClient) { }
          retry(1),
         catchError(this.handleError)
        );}
-   
-	
-	
-	 return this.http.get(urlc,{headers:httpOptions}).pipe(
+       if (choice ==4)
+		   
+		   {confirmUrl=addUser +`/confirm/${username}`
+	         return this.http.post(confirmUrl,{'confirmation':`${password}`},{headers:httpOptions}).pipe(
+         retry(1),
+        catchError(this.handleError)
+       );
+		   }
+	  return this.http.get(urlc,{headers:httpOptions}).pipe(
        retry(1),
        catchError(this.handleError)
      ); //login or get list of Fav

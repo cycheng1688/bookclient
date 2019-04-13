@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { MySessionService} from '../session-storage.service';
+import {Router} from "@angular/router";
 @Component({
   selector: 'app-inputtext',
   template: `
@@ -22,7 +23,7 @@ export class InputtextComponent {
 
 clickMessage = '';
 books:Object;
-  constructor(private data: DataService,private session: MySessionService) { }
+  constructor(private data: DataService,private session: MySessionService, private router: Router) { }
 
  addSearch(newSearch:string){
 	if(newSearch!=''){
@@ -50,6 +51,7 @@ addFavHandler(i:number,book:Object,choice:number)
       
      this.clickMessage =` Book with title: ${book[i].title} is saved!`
 	window.alert( this.clickMessage)
+	this.router.navigate(['/contact'])
 	})}
 else {
    this.clickMessage = `Need to login first!  book with title: ${book[i].title} is pressed!`;

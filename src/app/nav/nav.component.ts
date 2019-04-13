@@ -8,12 +8,13 @@ import { MySessionService} from '../session-storage.service';
 })
 export class NavComponent implements OnInit {
 appTitle = 'Bookshop';
+loginPage ='Sign In : Up'
 
   constructor(private session: MySessionService) { }
 
   ngOnInit() {
   
   
-  }
-
+  
+ }
 }

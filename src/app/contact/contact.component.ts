@@ -21,11 +21,11 @@ books:Object;
 
 clickMessage = '';
   constructor(private data: DataService,  private session: MySessionService) { }
-  // username:string, password:string, success:boolean
+ 
    
    ngOnInit() {
    
-     if(this.session&&this.session.getItem("username")!=null)
+     if(this.session&&this.session.getItem("username")!=undefined)
      {	
 	  console.log(this.session.getItem("success"))
 	  console.log(this.session.getItem("username"))
@@ -33,7 +33,7 @@ clickMessage = '';
 	  console.log('i in contact')
 	 let a=this.session.getItem("username")
 	 let b=this.session.getItem("password")
-	  console.log('a '+ a+' '+b)
+	  
 	 
 	  this.data.login_getFav(`${a}`,`${b}`,2).subscribe(data=>{
 	  
@@ -49,16 +49,13 @@ clickMessage = '';
    }
   
 	delFavHandler(i:number,book:Object,choice:number)
-	{if(this.session.getItem("username")!=null)
+	{if(this.session.getItem("username")!=undefined)
 	{ 
      let a=this.session.getItem("username")
 	 let b=this.session.getItem("password")
 	 let id =i
 	 let bookfav=book
-	 //console.log('a '+a)
-	 //console.log('b '+b)
-	 //console.log(id)
-	 //console.log(bookfav)
+	
 	 this.data.addFav(`${a}`,`${b}`, id, bookfav,3).subscribe(data=>{
      //this.books = JSON.stringify(data);	//error mapping as object return not array
       
