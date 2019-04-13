@@ -20,14 +20,14 @@ export class AboutComponent implements OnInit {
 
 	ngOnInit() { this.messageForm = this.formBuilder.group({ 
                  name: ['', Validators.required],       
-	             password: ['', Validators.required]
+	             password: ['', [Validators.required,Validators.minLength(6)]]
 			     });
 			    this.messageForm2 = this.formBuilder.group({
 			   fname: ['', Validators.required],
 		       lname: ['', Validators.required],
 		       uname: ['', Validators.required],
-			   upass: ['', Validators.required],
-			   uemail: ['', Validators.required]
+			   upass: ['', [Validators.required,Validators.minLength(6)]],
+			   uemail: ['', [Validators.required,Validators.email]]
 			   });
 	}
  onRegister() { 

@@ -19,8 +19,8 @@
 	<strong >   Password:   </strong> <br>    
 	<input type="text" style="font-size:16px" formControlName="password"  maxlength='10'> <br>      
 	<div *ngIf="submitted && messageForm.controls.password.errors" class="error">        
-	<div *ngIf="messageForm.controls.password.errors.required">A password is required</div>    
-    <div *ngIf="messageForm.controls.password.errors.minlength">Password must be at leat 6 characters</div></div>    
+	<div *ngIf="messageForm.controls.password.errors.required">A password is required</div> </div>
+    <div *ngIf="messageForm.controls.password.errors.minlength">Password must be at leat 6 characters</div>     
 	<br><hr>
 	<input type="submit" value="Submit" class="cta"> </form> 
     <div *ngIf="submitted" class="results">   </div> 
