@@ -4,20 +4,23 @@ import { DataService } from '../data.service';
 import { MySessionService} from '../session-storage.service';
 import {Router} from "@angular/router"
 
+
 @Component({
   selector: 'app-login',
-  templateUrl: './about.component.html',
-  styleUrls: ['./about.component.scss']
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
    
   
   })
-export class AboutComponent implements OnInit {
+
+export class LoginComponent implements OnInit {
 
   message:object;
   messageForm: FormGroup;   submitted = false;   success = false; Newuseradded = false;messageForm2: FormGroup; registered =false;
  
   constructor(private formBuilder: FormBuilder, private data: DataService, private session: MySessionService,private router: Router) { } 
-
+    
+	
 	ngOnInit() { this.messageForm = this.formBuilder.group({ 
                  name: ['', Validators.required],       
 	             password: ['', [Validators.required,Validators.minLength(6)]]
@@ -30,7 +33,8 @@ export class AboutComponent implements OnInit {
 			   uemail: ['', [Validators.required,Validators.email]]
 			   });
 	}
- onRegister() { 
+ 
+   onRegister() { 
  
         this.registered = true; 
 		
@@ -53,7 +57,7 @@ export class AboutComponent implements OnInit {
 	  console.log(this.session.getItem("uname"))
 	  console.log(this.session.getItem("upass"))
 	  console.log('all set')
-      this.router.navigate(['/about'])
+	  this.router.navigate(['/login'])
 	   
 	})
 	
@@ -75,10 +79,12 @@ export class AboutComponent implements OnInit {
 	  window.alert( 'You can now navigate your Favourites')
 	  console.log(this.session.getItem("success"))
 	  console.log(this.session.getItem("username"))
-	  console.log(this.session.getItem("password"))
-	   this.router.navigate(['/contact'])
+	  console.log(this.session.getItem("password"))  
+	   this.router.navigate(['/'])
 	 
 	   
 	})
-  }
+  }  
+  
+  
 }

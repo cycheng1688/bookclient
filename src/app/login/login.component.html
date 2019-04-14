@@ -7,7 +7,7 @@
 
 <div *ngIf="!success">
  <form  [formGroup]="messageForm" (ngSubmit)="onSubmit()"> 
- 
+ <label><h3><font color="green"> User Sign In</font></h3></label>
     <h2 *ngIf="success">{{message}}</h2> 
  
       <strong>    Username:  </strong> <br>
@@ -19,14 +19,14 @@
 	<strong >   Password:   </strong> <br>    
 	<input type="text" style="font-size:16px" formControlName="password"  maxlength='10'> <br>      
 	<div *ngIf="submitted && messageForm.controls.password.errors" class="error">        
-	<div *ngIf="messageForm.controls.password.errors.required">A password is required</div> </div>
-    <div *ngIf="messageForm.controls.password.errors.minlength">Password must be at leat 6 characters</div>     
+	<div *ngIf="messageForm.controls.password.errors.required">A password is required</div> 
+    <div *ngIf="messageForm.controls.password.errors.minlength">Password must be at leat 6 characters</div> </div>    
 	<br><hr>
 	<input type="submit" value="Submit" class="cta"> </form> 
     <div *ngIf="submitted" class="results">   </div> 
 
 	<form  [formGroup]="messageForm2" (ngSubmit)="onRegister()"> 
-	<label><h3><font color="red">New User Sign Up  </font></h3></label>
+	<label><h3><font color="red">New User Sign Up for Free</font></h3></label>
     <strong>    First Name:  </strong> <br>
 	<input type="text" style="font-size:16px"  formControlName="fname" maxlength='10'> <br>
 	<div *ngIf="registered  && messageForm2.controls.fname.errors" class="error">         

@@ -51,7 +51,7 @@ addFavHandler(i:number,book:Object,choice:number)
       
      this.clickMessage =` Book with title: ${book[i].title} is saved!`
 	window.alert( this.clickMessage)
-	this.router.navigate(['/contact'])
+	this.router.navigate(['/favorite'])
 	})}
 else {
    this.clickMessage = `Need to login first!  book with title: ${book[i].title} is pressed!`;

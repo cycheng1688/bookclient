@@ -16,7 +16,13 @@ import { MySessionService} from '../session-storage.service';
   
   `
 })
-export class ContactComponent implements OnInit {
+
+    
+	
+	
+	
+	
+export class FavoriteComponent implements OnInit {
 books:Object;
 
 clickMessage = '';
@@ -30,7 +36,7 @@ clickMessage = '';
 	  console.log(this.session.getItem("success"))
 	  console.log(this.session.getItem("username"))
 	  console.log(this.session.getItem("password"))
-	  console.log('i in contact')
+	  
 	 let a=this.session.getItem("username")
 	 let b=this.session.getItem("password")
 	  

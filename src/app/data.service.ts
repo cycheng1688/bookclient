@@ -13,10 +13,10 @@ import { HttpHeaders } from '@angular/common/http';
 
 export class DataService {
 
-   
+
 constructor(private http: HttpClient) { }
 
- 
+  
   login_getFav(username:string,password:string, choice:number) //1:login 2:get Fav //3:add user //4:confirm user
   {
     
